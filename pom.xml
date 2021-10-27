@@ -18,6 +18,8 @@
         <module>renren-fast</module>
         <module>renren-generator</module>
         <module>heiyingmail-common</module>
+        <module>heiyingmail-gateway</module>
+        <module>heiyingmail-third-party</module>
     </modules>
 
 </project>

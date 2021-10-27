@@ -1,0 +1,9 @@
+server:
+  port: 30000
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.1.104:8848
+  application:
+    name: heiyingmail-third-party

@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    username: root
+    password: qwe123
+    url: jdbc:mysql://192.168.122.168:3306/heiyingmail_sms
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr:  192.168.1.104:8848
+  application:
+    name: heiyingmail-coupon
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto     #主键自增
+server:
+  port: 7000
+

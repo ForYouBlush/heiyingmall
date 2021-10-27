@@ -3,7 +3,9 @@ package com.heiying.heiyingmail.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.heiying.common.utils.PageUtils;
 import com.heiying.heiyingmail.product.entity.AttrAttrgroupRelationEntity;
+import com.heiying.heiyingmail.product.vo.AttrGroupRelationVO;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +18,7 @@ import java.util.Map;
 public interface AttrAttrgroupRelationService extends IService<AttrAttrgroupRelationEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    void saveBatch(List<AttrGroupRelationVO> vos);
 }
 

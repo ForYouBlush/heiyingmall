@@ -3,7 +3,11 @@ package com.heiying.heiyingmail.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.heiying.common.utils.PageUtils;
 import com.heiying.heiyingmail.product.entity.AttrEntity;
+import com.heiying.heiyingmail.product.vo.AttrGroupRelationVO;
+import com.heiying.heiyingmail.product.vo.AttrRespVO;
+import com.heiying.heiyingmail.product.vo.AttrVO;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +20,19 @@ import java.util.Map;
 public interface AttrService extends IService<AttrEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    void saveAttr(AttrVO attr);
+
+    PageUtils queryPage(Map<String, Object> params, Long catlogId,String type);
+
+    AttrRespVO getAttrInfo(Long attrId);
+
+    void updateAttr(AttrVO attr);
+
+    List<AttrEntity> getRelationAttr(Long attrgroupId);
+
+    void deleteRelation(AttrGroupRelationVO[] vos);
+
+    PageUtils getNoRelationAttr(Map<String, Object> params, Long attrgroupId);
 }
 

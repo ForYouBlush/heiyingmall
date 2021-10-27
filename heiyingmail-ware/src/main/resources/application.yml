@@ -1,0 +1,28 @@
+server:
+  port: 11000
+
+spring:
+  datasource:
+    username: root
+    password: qwe123
+    url: jdbc:mysql://192.168.122.168:3306/heiyingmail_wms
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.1.104:8848
+  application:
+    name: heiyingmail-ware
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto     #主键自增
+logging:
+  level:
+    com.heiying.heiyingmail.ware: debug

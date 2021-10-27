@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    username: root
+    password: qwe123
+    url: jdbc:mysql://192.168.122.168:3306/heiyingmail_pms
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.1.104:8848
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+#    alicloud:
+#      access-key: LTAI5tHBWuBNrcurKyAmcteX
+#      secret-key: pg64qNoNcYkojvQGdXgUr4g67ymzuu
+#      oss:
+#        endpoint: oss-cn-beijing.aliyuncs.com
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto     #主键自增
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+server:
+  port: 10000
+logging:
+  level:
+    com.heiying.heiyingmail:  debug

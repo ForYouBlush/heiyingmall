@@ -1,7 +1,11 @@
 package com.heiying.heiyingmail.product.service.impl;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -11,6 +15,7 @@ import com.heiying.common.utils.Query;
 import com.heiying.heiyingmail.product.dao.ProductAttrValueDao;
 import com.heiying.heiyingmail.product.entity.ProductAttrValueEntity;
 import com.heiying.heiyingmail.product.service.ProductAttrValueService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service("productAttrValueService")
@@ -24,6 +29,31 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public void saveProductAttr(List<ProductAttrValueEntity> collect) {
+        this.saveBatch(collect);
+    }
+
+    @Override
+    public List<ProductAttrValueEntity> baseAttrListforspu(Long spuId) {
+        List<ProductAttrValueEntity> entities = this.baseMapper.selectList(new QueryWrapper<ProductAttrValueEntity>().eq("spu_id", spuId));
+        return entities;
+    }
+
+    @Override
+    @Transactional
+    public void updateSpuAttr(Long spuId, List<ProductAttrValueEntity> entities) {
+        //1、删除这个spuId之前对应的所有属性
+        this.baseMapper.delete(new QueryWrapper<ProductAttrValueEntity>().eq("spu_id",spuId));
+
+        //2、更新（新增）所有属性
+        List<ProductAttrValueEntity> collect = entities.stream().map(item -> {
+            item.setSpuId(spuId);
+            return item;
+        }).collect(Collectors.toList());
+        this.saveBatch(collect);
     }
 
 }
