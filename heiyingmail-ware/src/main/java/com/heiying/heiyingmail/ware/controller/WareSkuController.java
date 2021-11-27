@@ -1,14 +1,15 @@
 package com.heiying.heiyingmail.ware.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.heiying.common.exception.BizCodeEnume;
+import com.heiying.heiyingmail.ware.vo.LockStockResult;
+import com.heiying.heiyingmail.ware.vo.SkuHasStockVO;
+import com.heiying.heiyingmail.ware.vo.WareSkuLockVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.heiying.heiyingmail.ware.entity.WareSkuEntity;
 import com.heiying.heiyingmail.ware.service.WareSkuService;
@@ -29,6 +30,26 @@ import com.heiying.common.utils.R;
 public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
+
+
+    @PostMapping("/lock/order")
+    public R orderLockStock(@RequestBody WareSkuLockVO lockVO){
+        Boolean stock= null;
+        try {
+            stock = wareSkuService.orderLockStock(lockVO);
+            return R.ok();
+        } catch (Exception e) {
+            return R.error(BizCodeEnume.NO_STOCK_EXCEPTION.getCode(),BizCodeEnume.NO_STOCK_EXCEPTION.getMsg());
+        }
+
+    }
+
+    //查询sku是否有库存
+    @PostMapping("/hasstock")
+    public  R getSkusHasStock(@RequestBody List<Long> skuIds){
+            List<SkuHasStockVO> vos=wareSkuService.getSkusHasStock(skuIds);
+            return R.ok().setData(vos);
+    }
 
     /**
      * 列表
