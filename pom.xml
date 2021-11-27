@@ -20,6 +20,10 @@
         <module>heiyingmail-common</module>
         <module>heiyingmail-gateway</module>
         <module>heiyingmail-third-party</module>
+        <module>heiyingmail-search</module>
+        <module>heiyingmail-auth-server</module>
+        <module>heiyingmail-cart</module>
+        <module>heiyingmail-seckill</module>
     </modules>
 
 </project>
