@@ -5,5 +5,11 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.1.104:8848
+    alicloud:
+      text:
+        appcode: 41f2ecebef8a476994e86b5fbcc4b490
+        host: https://dfsns.market.alicloudapi.com
+        path: /data/send_sms
+        template-id: TPL_0001
   application:
     name: heiyingmail-third-party
