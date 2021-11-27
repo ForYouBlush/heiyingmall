@@ -1,6 +1,7 @@
 package com.heiying.heiyingmail.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import com.heiying.common.valid.AddGroup;
@@ -8,11 +9,7 @@ import com.heiying.common.valid.UpdateGroup;
 import com.heiying.common.valid.UpdateStatusGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.heiying.heiyingmail.product.entity.BrandEntity;
 import com.heiying.heiyingmail.product.service.BrandService;
@@ -53,6 +50,14 @@ public class BrandController {
 
         return R.ok().put("brand", brand);
     }
+
+    @GetMapping("/infos")
+    public R info(@RequestParam("brandIds") List<Long> brandIds) {
+        List<BrandEntity> brand = brandService.getBrandsById(brandIds);
+
+        return R.ok().put("brand", brand);
+    }
+
 
     /**
      * 保存

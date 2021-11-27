@@ -3,7 +3,7 @@ package com.heiying.heiyingmail.product.service.impl;
 import com.heiying.heiyingmail.product.entity.AttrEntity;
 import com.heiying.heiyingmail.product.service.AttrService;
 import com.heiying.heiyingmail.product.vo.AttrGroupWithAttrsVO;
-import com.heiying.heiyingmail.product.vo.AttrVO;
+import com.heiying.heiyingmail.product.vo.SkuItemVO;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -86,6 +86,13 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
             return attrsVO;
         }).collect(Collectors.toList());
         return collect;
+    }
+
+    @Override
+    public List<SkuItemVO.SpuItemAttrGroupVO> getAttrGroupWithAttrsBySpuId(Long spuId, Long catalogId) {
+        //1、查出当前spu对应的所有属性分组信息以及当前分组下的所有属性对应的值
+        List<SkuItemVO.SpuItemAttrGroupVO> attrGroupVOS=baseMapper.getAttrGroupWithAttrsBySpuId(spuId,catalogId);
+        return attrGroupVOS;
     }
 
 

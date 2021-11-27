@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.heiying.common.utils.PageUtils;
 import com.heiying.heiyingmail.product.entity.AttrGroupEntity;
 import com.heiying.heiyingmail.product.vo.AttrGroupWithAttrsVO;
-import com.heiying.heiyingmail.product.vo.AttrVO;
+import com.heiying.heiyingmail.product.vo.SkuItemVO;
 
 import java.util.List;
 import java.util.Map;
@@ -24,5 +24,7 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
 
 
     List<AttrGroupWithAttrsVO> getAttrGroupWithAttrsByCatlogId(Long catlogId);
+
+    List<SkuItemVO.SpuItemAttrGroupVO> getAttrGroupWithAttrsBySpuId(Long spuId, Long catalogId);
 }
 

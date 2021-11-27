@@ -1,6 +1,9 @@
 package com.heiying.heiyingmail.product.service.impl;
 
+import com.heiying.heiyingmail.product.vo.SkuItemVO;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +27,17 @@ public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueDao
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<SkuItemVO.SkuItemSaleAttrVO> getSaleAttrsBySpuId(Long spuId) {
+        List<SkuItemVO.SkuItemSaleAttrVO> saleAttrVOS=baseMapper.getSaleAttrsBySpuId(spuId);
+        return saleAttrVOS;
+    }
+
+    @Override
+    public List<String> getSkuSaleAttrValuesAsStringList(Long skuId) {
+        return baseMapper.getSkuSaleAttrValuesAsStringList(skuId);
     }
 
 }

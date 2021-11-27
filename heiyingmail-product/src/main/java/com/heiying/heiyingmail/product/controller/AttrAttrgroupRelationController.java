@@ -3,6 +3,7 @@ package com.heiying.heiyingmail.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.heiying.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.heiying.heiyingmail.product.entity.AttrAttrgroupRelationEntity;
 import com.heiying.heiyingmail.product.service.AttrAttrgroupRelationService;
 import com.heiying.common.utils.PageUtils;
-import com.heiying.common.utils.R;
+
 
 
 /**

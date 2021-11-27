@@ -14,6 +14,7 @@ import com.heiying.heiyingmail.product.vo.AttrRespVO;
 import com.heiying.heiyingmail.product.vo.AttrVO;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -117,6 +118,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         return pageUtils;
     }
 
+    @Cacheable(value = "attr",key = "'attrInfo:'+#root.args[0]")
     @Override
     public AttrRespVO getAttrInfo(Long attrId) {
         AttrRespVO respVO = new AttrRespVO();
@@ -236,5 +238,10 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         }
         IPage<AttrEntity> page = this.page(new Query<AttrEntity>().getPage(params), wrapper);
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<Long> selectSearchAttrIds(List<Long> attrIds) {
+        return baseMapper.selectSearchAttrIds(attrIds);
     }
 }

@@ -3,6 +3,7 @@ package com.heiying.heiyingmail.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.heiying.common.utils.PageUtils;
 import com.heiying.heiyingmail.product.entity.CategoryEntity;
+import com.heiying.heiyingmail.product.vo.Catalog2VO;
 
 import java.util.List;
 import java.util.Map;
@@ -31,5 +32,9 @@ public interface CategoryService extends IService<CategoryEntity> {
     Long[] findCatelogPath(Long catelogId);
 
     void updateCascade(CategoryEntity category);
+
+    List<CategoryEntity> getLevel1Categorys();
+
+    Map<String, List<Catalog2VO>> getCatalogJson();
 }
 

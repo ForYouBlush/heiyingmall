@@ -2,7 +2,11 @@ package com.heiying.heiyingmail.product.dao;
 
 import com.heiying.heiyingmail.product.entity.AttrGroupEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.heiying.heiyingmail.product.vo.SkuItemVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 属性分组
@@ -13,5 +17,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface AttrGroupDao extends BaseMapper<AttrGroupEntity> {
-	
+
+    List<SkuItemVO.SpuItemAttrGroupVO> getAttrGroupWithAttrsBySpuId(@Param("spuId") Long spuId, @Param("catalogId") Long catalogId);
 }
