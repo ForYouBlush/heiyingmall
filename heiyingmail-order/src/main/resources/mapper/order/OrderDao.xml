@@ -50,4 +50,9 @@
     </resultMap>
 
 
+  <update id="updateOrderStatus">
+      update oms_order set status=#{code} where order_sn=#{outTradeNo}
+  </update>
+
+
 </mapper>
