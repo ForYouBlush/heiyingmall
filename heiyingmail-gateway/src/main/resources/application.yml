@@ -16,6 +16,15 @@ spring:
           filters:
             - RewritePath=/api/?(?<segment>.*),/$\{segment}
 
+
+        - id: coupon_route
+          uri: lb://heiyingmail-coupon
+          predicates:
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*),/$\{segment}
+
+
         - id: third_party_route
           uri: lb://heiyingmail-third-party
           predicates:
@@ -50,6 +59,47 @@ spring:
             - Path=/api/**
           filters:
             - RewritePath=/api/?(?<segment>.*),/renren-fast/$\{segment}
+
+        - id: heiyingmail_host_route
+          uri: lb://heiyingmail-product
+          predicates:
+            - Host=heiyingmail.com,item.heiyingmail.com
+
+
+        - id: heiyingmail_search_route
+          uri: lb://heiyingmail-search
+          predicates:
+            - Host=search.heiyingmail.com
+
+
+        - id: heiyingmail_auth_route
+          uri: lb://heiyingmail-auth-server
+          predicates:
+            - Host=auth.heiyingmail.com
+
+
+        - id: heiyingmail_cart_route
+          uri: lb://heiyingmail-cart
+          predicates:
+            - Host=cart.heiyingmail.com
+
+
+        - id: heiyingmail_order_route
+          uri: lb://heiyingmail-order
+          predicates:
+            - Host=order.heiyingmail.com
+
+
+        - id: heiyingmail_member_route
+          uri: lb://heiyingmail-member
+          predicates:
+            - Host=member.heiyingmail.com
+
+
+        - id: heiyingmail_seckill_route
+          uri: lb://heiyingmail-seckill
+          predicates:
+            - Host=seckill.heiyingmail.com
 
 
 #前端项目带api前缀
